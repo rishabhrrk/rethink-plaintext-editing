@@ -100,7 +100,7 @@ Previewer.propTypes = {
 // Uncomment keys to register editors for media types
 const REGISTERED_EDITORS = {
   // "text/plain": PlaintextEditor,
-  // "text/markdown": MarkdownEditor,
+  "text/markdown": MarkdownEditor,
 };
 
 function PlaintextFilesChallenge() {
@@ -157,15 +157,18 @@ function PlaintextFilesChallenge() {
       <main className={css.editorWindow}>
         {activeFile && (
           <>
-            {Editor && <Editor file={activeFile} write={write} />}
+            {/* {Editor && <Editor file={activeFile} write={write} />} */}
             {!Editor && <Previewer file={activeFile} />}
+            {Editor &&<MarkdownEditor file={activeFile} write={write} />}
           </>
         )}
 
         {!activeFile && (
           <div className={css.empty}>Select a file to view or edit</div>
         )}
+        
       </main>
+      
     </div>
   );
 }
