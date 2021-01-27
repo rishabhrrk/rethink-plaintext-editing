@@ -1,9 +1,37 @@
-.editor {
-  width: 640px;
-  background-color: var(--color-white);
-  padding: 20px;
+.app {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.editor {
+  /* flex: auto; */
+  border: 3px solid var(--color-border);
+  background-color:  hsla(0, 52%, 96%, 0.16);
+  border-radius: 4px;
+  height: 90%;
+  align-items: center;
+  padding: 4px 4px;
+  justify-content: center;
+  width: 100%;
+  box-shadow: 0 2px 16px hsla(0, 0%, 0%, 0.16);
+}
+
+.formatbar{
+  display: flex;
+  padding: 10px 5px;
+}
+
+.formatoption{
+  flex: auto;
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  background-color: rgba(89, 92, 89, 0.356);
+  padding: 5px;
+  font-weight: bold;
+  font-size: medium;
 }

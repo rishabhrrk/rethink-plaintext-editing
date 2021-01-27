@@ -99,8 +99,8 @@ Previewer.propTypes = {
 
 // Uncomment keys to register editors for media types
 const REGISTERED_EDITORS = {
-  // "text/plain": PlaintextEditor,
-  "text/markdown": MarkdownEditor,
+  'text/plain': PlaintextEditor,
+  'text/markdown': MarkdownEditor
 };
 
 function PlaintextFilesChallenge() {
@@ -112,10 +112,15 @@ function PlaintextFilesChallenge() {
     setFiles(files);
   }, []);
 
-  const write = file => {
-    console.log('Writing soon... ', file.name);
-
-    // TODO: Write the file to the `files` array
+  const write = async(file) => {
+    let i;
+      for(i=0;i<files.length;i++){
+        if(files[i].name===file.name){
+          break;
+        }
+      }
+      files[i] = file;
+      setFiles(files);
   };
 
   const Editor = activeFile ? REGISTERED_EDITORS[activeFile.type] : null;
@@ -157,18 +162,20 @@ function PlaintextFilesChallenge() {
       <main className={css.editorWindow}>
         {activeFile && (
           <>
-            {/* {Editor && <Editor file={activeFile} write={write} />} */}
+            {/* {Editor === PlaintextEditor && <PlaintextEditor file={activeFile} write={write} />} */}
+            {/* {Editor === PlaintextEditor && <PlaintextEditor file={activeFile} />}
             {!Editor && <Previewer file={activeFile} />}
-            {Editor &&<MarkdownEditor file={activeFile} write={write} />}
+            {Editor === MarkdownEditor && <MarkdownEditor file={activeFile} write={write} />} */}
+
+            {Editor && <Editor file={activeFile} write={write} />}
+            {!Editor && <Previewer file={activeFile} />}
           </>
         )}
 
         {!activeFile && (
           <div className={css.empty}>Select a file to view or edit</div>
         )}
-        
       </main>
-      
     </div>
   );
 }
