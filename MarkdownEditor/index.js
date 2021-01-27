@@ -14,8 +14,20 @@ function MarkdownEditor({ file, write }) {
       setInput(await file.text());
     })();
   }, [file]);
+
+  const saveText = () => {
+    const newFile = new File([input], file.name, {
+      type: file.type,
+      lastModified: new Date(Date.now())
+    })
+    write(newFile);
+  };
+
   return (
     <div className={css.outer}>
+      <button className={css.formatoption} onClick={saveText}>
+            SAVE
+          </button>
       <h2 style={{textAlign:"center"}}>{path.basename(file.name)}</h2>
       <div className={css.App}>
       <textarea className={css.editor} value={input} onChange={(e) => {

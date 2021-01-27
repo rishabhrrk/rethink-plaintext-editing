@@ -9,6 +9,18 @@
   border: 3px solid green;
 }
 
+.formatoption{
+  position: absolute;
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
+  background-color: rgba(56, 170, 52, 0.536);
+  padding: 5px;
+  color: white;
+  margin: 15px;
+  font-weight: bold;
+  font-size: medium;
+}
+
 .App {
   display: flex;
   flex-wrap: wrap;
